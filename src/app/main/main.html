@@ -1,0 +1,40 @@
+<div class="mainPage">
+    <div class="header">
+        <ul>
+            <li ng-click="openLoginPopup(0);">Login</li>
+            <li ng-click="openLoginPopup(1);" class="-reg">Register</li>
+        </ul>
+    </div>
+    <div class="mp-input">
+        <input type="text" placeholder="Search for Doctor, Hospital">
+    </div>
+    <div class="loginPopup" ng-show="loginPopup">
+        <div class="lp-backdrop"  ng-click="closeLoginPopup();"></div>
+        <div class="lp-container">
+            <div class="lpc-log">
+                <img src="assets/logo.png">
+            </div>
+            <div class="lpc-head">
+                <div class="lpch-item" ng-click="changeLoginTab(0)" ng-class="{'active': loginTab == 0}">Login</div>
+                <div class="lpch-item" ng-click="changeLoginTab(1)" ng-class="{'active': loginTab == 1}">Register</div>
+            </div>
+            <div class="lpc-form" ng-show="loginTab == 0">
+                <input placeholder="Phone Number" type="text" ng-model="username">
+                <input placeholder="Password" type="password" ng-model="password">
+                <button ng-click="login()">Login</button>
+                <div class="lpcf-error">{{loginError}}</div>
+            </div>
+            <div class="lpc-form -reg" ng-show="loginTab == 1">
+                <input placeholder="name" type="text" ng-model="regForm[0].model" ng-change="validate()" ng-class="{'-error': regFormUIValidate(0)}">
+                <input placeholder="Phone Number" type="text" ng-model="regForm[1].model" ng-change="validate()"  ng-class="{'-error': regFormUIValidate(1)}">
+                <input placeholder="Password" type="password" ng-model="regForm[2].model" ng-change="validate()"  ng-class="{'-error': regFormUIValidate(2)}">
+                <input placeholder="Confirm Password" type="password" ng-model="regForm[3].model" ng-change="validate()"  ng-class="{'-error': regFormUIValidate(3)}">
+                <button ng-click="register()">
+                    <span ng-show="!regFormBusy">Register</span>
+                    <span ng-show="regFormBusy"><i class="fa fa-spin fa-gear"></i></span>
+                </button>
+                <div class="lpcf-error">{{regError}}</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,207 @@
+.mainPage{
+  @extend box;
+  @extend basicFont;
+  position: absolute;
+  top:0;
+  left:0;
+  bottom: 0;
+  right:0;
+
+  /*Header*/
+
+  .header{
+    @extend box;
+    font-family: gotham-b;
+    color: $theme2;
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    height: 70px;
+    padding-top: 10px;
+    ul{
+      @extend box;
+      float: right;
+      padding: 0;
+      margin: 0;
+      padding-right: 40px;
+      li:hover{
+        cursor: pointer;
+        background: #fafafa;
+      }
+      li{
+        @extend box;
+        padding: 0 16px;
+        margin:10px 7px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid transparent;
+        @include transition(0.2s);
+        @include border-radius(15px);
+      }
+      li.-reg{
+        border-color: #aaa;
+      }
+      li.-reg:hover{
+        background: $theme;
+        border-color: $theme;
+        color: #fff;
+      }
+    }
+  }
+
+  /*Page*/
+
+  .mp-input{
+    @extend box;
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    top:40%;
+    left: 50%;
+    margin-left: -200px;
+    input{
+      @extend box;
+      @include border-radius(25px);
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      @include shadow(0 0 0 #fff);
+    }
+  }
+
+  .loginPopup{
+    position: fixed;
+    z-index: 9999;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    @include transition(0.3s);
+    .lp-backdrop{
+      @extend box;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.03);
+      @include transition(0.3s);
+    }
+    .lp-container{
+      @extend box;
+      @include border-radius(25px 25px 0 0);
+      position: absolute;
+      left: 50%;
+      margin-left: -250px;
+      width: 500px;
+      top:20%;
+      height: 100%;
+      background: #fff;
+      @include transition(0.3s);
+      @include shadow(0 0 70px rgba(0,0,0,0.05));
+      padding: 0 50px;
+      .lpc-head{
+        @extend box;
+        color: #777;
+        width: 100%;
+        height: 50px;
+        margin-top: 20px;
+        font-size: 15px;;
+        .lpch-item:hover{
+          cursor: pointer;
+          border-color: #ddd;
+        }
+        .lpch-item.active{
+          border-color: $theme;
+        }
+        .lpch-item{
+          @extend box;
+          height: 50px;
+          line-height: 50px;
+          width: 50%;
+          text-align: center;
+          border-bottom: 2px solid #f6f6f6;
+        }
+      }
+
+      .lpc-log{
+        @extend box;
+        width: 100%;
+        padding-top: 35px;
+        img{
+          width: 80%;
+          margin: 0 10%;
+        }
+      }
+
+      .lpc-form.-reg{
+        margin-top: 0;
+      }
+      .lpc-form{
+        @extend box;
+        width: 100%;
+        padding: 50px;
+        margin-top: 40px;
+        button,
+        input{
+          @extend box;
+          margin: 5px 0;
+          width: 100%;
+          height:40px;
+          line-height: 40px;
+          font-size: 13px;
+          @include shadow(0 0 0 #fff);
+          @include border-radius(20px);
+          padding-left: 20px;
+        }
+        input.-error{
+          border-color: #e95d58;
+        }
+        button:hover{
+          cursor: pointer;
+        }
+        button{
+          font-family: gotham-b;
+          background: $theme2;
+          padding:0;
+          color: #fff;
+        }
+        .lpcf-error{
+          @extend box;
+          width: 100%;
+          text-align: center;
+          line-height: 120%;
+          padding:10px;
+          color: #d75c59;
+        }
+      }
+    }
+  }
+  .loginPopup.ng-hide-add-active{
+    .lp-backdrop{
+      background-color: rgba(0,0,0,0.03);
+    }
+    .lp-container{
+      top:100%;
+    }
+  }
+  .loginPopup.ng-hide-add{
+    .lp-backdrop {
+      background-color: rgba(0,0,0,0);
+    }
+  }
+  .loginPopup.ng-hide-remove-active{
+    .lp-backdrop{
+      background-color: rgba(0,0,0,0.03);
+    }
+    .lp-container{
+      top:20%;
+    }
+  }
+  .loginPopup.ng-hide-remove{
+    .lp-backdrop {
+      background-color: rgba(0,0,0,0);
+    }
+    .lp-container{
+      top:100%;
+    }
+  }
+}
